@@ -11,10 +11,10 @@ export function NewSpace(){
       <aside>
         <img src={illustrationImg} alt="Illustration Img" />
         <strong>
-          Create a Q&amp;A's Space Online.
+          Every question has an answer.
         </strong>
         <p>
-          Answer your audience's Questions in Real Time. Friendly and Safe Place.
+          Learn and share knowledge<br />with other people.
         </p>
       </aside>
       <main>

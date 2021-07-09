@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import illustrationImg from './../assets/images/illustration.svg';
 import logoImg from './../assets/images/logo.svg';
 
@@ -33,7 +35,7 @@ export function NewSpace(){
             </Button>
           </form>
           <p>
-          Do you want to Join an existing Space? <span>Click here!</span>
+          Do you want to Join an existing Space? <Link to="/">Click here!</Link>
           </p>
         </div>
       </main>

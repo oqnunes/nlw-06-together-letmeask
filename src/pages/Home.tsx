@@ -11,7 +11,7 @@ export function Home(){
 
   const history = useHistory();
 
-  const navigateToNewSpace = () => {
+  const _handleCreateSpace = () => {
     history.push('/new-space');
   }
 
@@ -31,7 +31,7 @@ export function Home(){
           <img src={logoImg} alt="Logo" />
           <button 
             className="create-space"
-            onClick={navigateToNewSpace}
+            onClick={_handleCreateSpace}
           >
             <img src={googleIconImg} alt="BI" />
             Create your Space with Google.

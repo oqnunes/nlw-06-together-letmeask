@@ -1,18 +1,28 @@
 import { useHistory } from 'react-router-dom';
 
+import { auth, firebase} from './../services/firebase';
+
+import { Button } from '../components/Button/Button';
+
 import illustrationImg from './../assets/images/illustration.svg';
 import logoImg from './../assets/images/logo.svg';
 import googleIconImg from './../assets/images/google-icon.svg';
 
 import './../styles/auth.scss';
-import { Button } from '../components/Button/Button';
 
 export function Home(){
 
   const history = useHistory();
 
   const _handleCreateSpace = () => {
-    history.push('/new-space');
+
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    auth.signInWithPopup(provider).then((result) => {
+      console.log({result: result});
+    })
+    
+   history.push('/new-space');
   }
 
   return(

@@ -1,0 +1,133 @@
+#page-auth{
+  display: flex;
+  height: 100vh;
+
+  aside{
+    
+    width: 55%;
+    height: 100%;
+
+    background-color: #835AFD;
+    color: #FFF;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 120px 80px;
+
+    img{
+      width: 100%;
+      max-width: 320px;
+      max-height: 300px;
+    }
+
+    strong{
+      font: 600 32px 'Poppins', sans-serif;
+      line-height: 42px;
+      margin-top: 16px;
+    }
+
+    p{
+      margin-top: 16px;
+      color: #f8f8f8;
+      font: 300 22px 'Ubuntu', sans-serif;
+      line-height: 34px;
+    }
+
+  }
+  main{
+    width: 45%;
+    height: 100%;
+
+    padding: 0px 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .main-content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    align-items: stretch;
+    text-align: center;
+
+    > img {
+      align-self: center;
+    }
+
+    form{
+      input{
+        height: 50px;
+        border-radius: 8px;
+        padding: 0px 16px;
+        background-color: #FFF;
+        border: 1px solid #a8a8b3;
+      }
+      button{
+        margin-top: 16px;
+      }
+      button, input{
+        width: 100%;
+      }
+
+    }
+  }
+
+  .create-space{
+    margin-top: 44px;
+    height: 50px;
+    border-radius: 8px;
+    font-weight: 500;
+    background-color: #ea4335;
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    border: 0;
+
+    transition: filter 0.2s;
+
+    img {
+      margin-right: 8px;
+    }
+
+    &:hover{
+      filter: brightness(0.9);
+    }
+
+  }
+
+  .separator{
+    font-size: 14px;
+    color: #a8a8b3;
+
+    margin: 32px 0px;
+    display: flex;
+    align-items: center;
+
+    &::before{
+      content: '&nbsp;';
+      flex: 1;
+      height: 2;
+      background: #a8a8b3;
+      margin-right: 16px;
+      font-size: 1px;
+    }
+    &::after{
+      content: '&nbsp;';
+      flex: 1;
+      height: 2;
+      background: #a8a8b3;
+      margin-left: 16px;
+      font-size: 1px;
+    }
+  }
+}

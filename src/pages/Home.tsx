@@ -1,8 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { auth, firebase} from './../services/firebase';
-
 import { Button } from '../components/Button/Button';
+
+import { AuthContext } from '../App';
 
 import illustrationImg from './../assets/images/illustration.svg';
 import logoImg from './../assets/images/logo.svg';
@@ -14,17 +16,15 @@ export function Home(){
 
   const history = useHistory();
 
-  const _handleCreateSpace = () => {
+   const { user, signInWithPopup } = useContext(AuthContext);
 
-    const provider = new firebase.auth.GoogleAuthProvider();
-
-    auth.signInWithPopup(provider).then((result) => {
-      console.log({result: result});
-    })
-    
-   history.push('/new-space');
+  const _handleCreatePlace = async () => {
+    if(!user){
+      await signInWithPopup()
+    }
+    history.push('/new-space');
   }
-
+  
   return(
     <div id="page-auth">
       <aside>
@@ -41,7 +41,7 @@ export function Home(){
           <img src={logoImg} alt="Logo" />
           <button 
             className="create-space"
-            onClick={_handleCreateSpace}
+            onClick={() => _handleCreatePlace()}
           >
             <img src={googleIconImg} alt="BI" />
             Create your Space with Google.

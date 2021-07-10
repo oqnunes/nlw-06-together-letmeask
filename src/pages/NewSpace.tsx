@@ -1,12 +1,27 @@
-import { Link } from 'react-router-dom';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+
+import { Button } from '../components/Button/Button';
+
+import { AuthContext } from '../App';
 
 import illustrationImg from './../assets/images/illustration.svg';
 import logoImg from './../assets/images/logo.svg';
 
 import './../styles/auth.scss';
-import { Button } from '../components/Button/Button';
 
 export function NewSpace(){
+
+  const history = useHistory();
+
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    if(!user){
+      history.push('/');
+    }
+  }, [user]);
 
   return(
     <div id="page-auth">
@@ -22,6 +37,7 @@ export function NewSpace(){
       <main>
         <div className="main-content">
           <img src={logoImg} alt="Logo" />
+          <h1>{user?.name}</h1>
           <h2>Create new Space</h2>
           <form>
             <input 

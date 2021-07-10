@@ -1,25 +1,43 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+
+import { Button } from '../components/Button/Button';
+
+import { AuthContext } from '../App';
+
 import illustrationImg from './../assets/images/illustration.svg';
 import logoImg from './../assets/images/logo.svg';
 
 import './../styles/auth.scss';
-import { Button } from '../components/Button/Button';
 
 export function NewSpace(){
+
+  const history = useHistory();
+
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    if(!user){
+      history.push('/');
+    }
+  }, [user]);
 
   return(
     <div id="page-auth">
       <aside>
         <img src={illustrationImg} alt="Illustration Img" />
         <strong>
-          Create a Q&amp;A's Space Online.
+          Every question has an answer.
         </strong>
         <p>
-          Answer your audience's Questions in Real Time. Friendly and Safe Place.
+          Learn and share knowledge<br />with other people.
         </p>
       </aside>
       <main>
         <div className="main-content">
           <img src={logoImg} alt="Logo" />
+          <h1>{user?.name}</h1>
           <h2>Create new Space</h2>
           <form>
             <input 
@@ -33,7 +51,7 @@ export function NewSpace(){
             </Button>
           </form>
           <p>
-          Do you want to Join an existing Space? <span>Click here!</span>
+          Do you want to Join an existing Space? <Link to="/">Click here!</Link>
           </p>
         </div>
       </main>

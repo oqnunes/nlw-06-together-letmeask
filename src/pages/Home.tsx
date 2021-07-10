@@ -1,12 +1,30 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+
+import { Button } from '../components/Button/Button';
+
+import { AuthContext } from '../App';
+
 import illustrationImg from './../assets/images/illustration.svg';
 import logoImg from './../assets/images/logo.svg';
 import googleIconImg from './../assets/images/google-icon.svg';
 
 import './../styles/auth.scss';
-import { Button } from '../components/Button/Button';
 
 export function Home(){
 
+  const history = useHistory();
+
+   const { user, signInWithPopup } = useContext(AuthContext);
+
+  const _handleCreatePlace = async () => {
+    if(!user){
+      await signInWithPopup()
+    }
+    history.push('/new-space');
+  }
+  
   return(
     <div id="page-auth">
       <aside>
@@ -21,7 +39,10 @@ export function Home(){
       <main>
         <div className="main-content">
           <img src={logoImg} alt="Logo" />
-          <button className="create-space">
+          <button 
+            className="create-space"
+            onClick={() => _handleCreatePlace()}
+          >
             <img src={googleIconImg} alt="BI" />
             Create your Space with Google.
           </button>

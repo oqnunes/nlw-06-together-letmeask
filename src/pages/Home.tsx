@@ -1,22 +1,19 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { Button } from '../components/Button/Button';
-
-import { AuthContext } from '../App';
 
 import illustrationImg from './../assets/images/illustration.svg';
 import logoImg from './../assets/images/logo.svg';
 import googleIconImg from './../assets/images/google-icon.svg';
 
 import './../styles/auth.scss';
+import { useAuth } from '../hooks/useAuths';
 
 export function Home(){
 
   const history = useHistory();
 
-   const { user, signInWithPopup } = useContext(AuthContext);
+   const { user, signInWithPopup } = useAuth();
 
   const _handleCreatePlace = async () => {
     if(!user){

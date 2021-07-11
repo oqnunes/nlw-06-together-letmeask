@@ -1,21 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { Button } from '../components/Button/Button';
-
-import { AuthContext } from '../App';
 
 import illustrationImg from './../assets/images/illustration.svg';
 import logoImg from './../assets/images/logo.svg';
 
 import './../styles/auth.scss';
+import { useAuth } from '../hooks/useAuths';
 
 export function NewSpace(){
 
   const history = useHistory();
 
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
 
   useEffect(() => {
     if(!user){
